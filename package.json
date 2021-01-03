@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/RyN21/dex/issues"
   },
-  "homepage": "https://github.com/RyN21/dex#readme"
+  "homepage": "https://github.com/RyN21/dex#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.3.0",
+    "@openzeppelin/test-helpers": "^0.5.10"
+  }
 }
