@@ -67,7 +67,7 @@ contract('Dex', (accounts) => {
       {from: trader1}
     );
 
-    const balance = await dex.traderBalances(trader, DAI);
+    const balance = await dex.traderBalances(trader1, DAI);
     assert(balance.toString() === amount);
   });
 
@@ -80,5 +80,17 @@ contract('Dex', (accounts) => {
       ),
       'This token does not exist.'
     );
+  });
+
+  it('Should WITHDRAW tokens', async => {
+    const amount = web3.utils.toWei('100');
+    await dex.withdraw(
+      amount,
+      DAI,
+      {from: trader1}
+    );
+
+    const balance = await dex.traderBalances(trader1, DAI);
+    assert(balance.toString() === amount);
   });
 });
