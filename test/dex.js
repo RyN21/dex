@@ -83,17 +83,27 @@ contract('Dex', (accounts) => {
   });
 
   it('Should WITHDRAW tokens', async () => {
-    const balance = await dex.traderBalances(trader1, DAI);
     const amount = web3.utils.toWei('100');
+
+    await dex.deposit(
+      amount,
+      DAI,
+      {from: trader1}
+    );
+
     await dex.withdraw(
       amount,
       DAI,
       {from: trader1}
     );
 
-    const finalBalance = await dex.traderBalances(trader1, DAI);
-    const diffBalance = balance - finalBalance;
-    assert(diffBalance.toString() === amount);
+    const [balanceDex, balanceDai] = await Promise.all([
+      dex.traderBalances(trader1, DAI),
+      dai.balanceOf(trader1)
+    ]);
+
+    assert(balanceDex.isZero());
+    assert(balanceDai.toString() === web3.utils.toWei('1000'));
   });
 
   it('Should NOT WITHDRAW token if token does not exist', async () => {
