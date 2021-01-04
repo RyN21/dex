@@ -1,3 +1,4 @@
+const { expectRevert } = require('@openzeppelin/test-helpers');
 const Dai = artifacts.require('mocks/Dai.sol');
 const Bat = artifacts.require('mocks/Bat.sol');
 const Rep = artifacts.require('mocks/Rep.sol');
@@ -5,8 +6,8 @@ const Zrx = artifacts.require('mocks/Zrx.sol');
 const Dex = artifacts.require('Dex.sol');
 
 contract('Dex', (accounts) => {
-  // create mock token variables
-  let dai, bat, rep, zrx;
+  // create mock token variables and dex
+  let dai, bat, rep, zrx, dex;
   // create traders
   const [trader1, trader2] = [accounts[1], accounts[2]];
   // produce tickers for through Ascii
@@ -21,7 +22,7 @@ contract('Dex', (accounts) => {
       Zrx.new()
     ]));
     // create deployed instance of dex smart contract
-    const dex = await Dex.new();
+    dex = await Dex.new();
     // add tokens to dex smart contract instance
     await Promise.all([
       dex.addToken(DAI ,dai.address),
@@ -68,5 +69,16 @@ contract('Dex', (accounts) => {
 
     const balance = await dex.traderBalances(trader, DAI);
     assert(balance.toString() === amount);
+  });
+
+  it('Should NOT DEPOSIT token if token does not exist', async () => {
+    await expectRevert(
+      await dex.deposit(
+        web3.utils.toWei('100'),
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
+        {from: trader1}
+      ),
+      'This token does not exist.'
+    );
   });
 });
