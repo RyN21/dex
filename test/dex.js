@@ -25,5 +25,28 @@ contract('Dex', (accounts) => {
       dex.addToken(REP ,rep.address),
       dex.addToken(ZRX ,zrx.address)
     ]);
+
+    const amount = web3.utils.toWei('1000');
+    const seedTokenBalance = async (token, trader) => {
+      await token.faucet(trader, amount);
+      await token.approve(
+        dex.address,
+        amount,
+        {from: trader}
+      );
+    };
+
+    await Promise.all(
+      [dai, bat, rep, zrx].map(
+        token => seedTokenBalance(token, trader1)
+      )
+    );
+
+    await Promise.all(
+      [dai, bat, rep, zrx].map(
+        token => seedTokenBalance(token, trader2)
+      )
+    );
+
   });
 });
