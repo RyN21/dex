@@ -4,9 +4,9 @@ const Rep = artifacts.require('mocks/Rep.sol');
 const Zrx = artifacts.require('mocks/Zrx.sol');
 const Dex = artifacts.require('Dex.sol');
 
-contract('Dex', () => {
+contract('Dex', (accounts) => {
   let dai, bat, rep, zrx;
-
+  const [trader1, trader2] = [accounts[1], accounts[2]];
   // produce tickers for through Ascii
   const [DAI, BAT, REP, ZRX] = ['DAI', 'BAT', 'REP', 'ZRX']
     .map(ticker => web3.utils.fromAscii(ticker));
