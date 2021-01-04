@@ -93,4 +93,15 @@ contract('Dex', (accounts) => {
     const balance = await dex.traderBalances(trader1, DAI);
     assert(balance.toString() === amount);
   });
+
+  it('Should NOT WITHDRAW token if token does not exist', async () => {
+    await expectRevert(
+      await dex.withdraw(
+        web3.utils.toWei('100'),
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
+        {from: trader1}
+      ),
+      'This token does not exist.'
+    );
+  });
 });
