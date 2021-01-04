@@ -56,6 +56,17 @@ contract('Dex', (accounts) => {
         token => seedTokenBalance(token, trader2)
       )
     );
+  });
 
+  it('Should DEPOSIT tokens', async () => {
+    const amount = web3.utils.toWei('100');
+    await dex.deposit(
+      amount,
+      DAI,
+      {from: trader1}
+    );
+
+    const balance = await dex.traderBalances(trader, DAI);
+    assert(balance.toString() === amount);
   });
 });
