@@ -6,6 +6,7 @@ const Dex = artifacts.require('Dex.sol');
 
 contract('Dex', (accounts) => {
   let dai, bat, rep, zrx;
+  // create traders
   const [trader1, trader2] = [accounts[1], accounts[2]];
   // produce tickers for through Ascii
   const [DAI, BAT, REP, ZRX] = ['DAI', 'BAT', 'REP', 'ZRX']
@@ -18,7 +19,9 @@ contract('Dex', (accounts) => {
       Rep.new(),
       Zrx.new()
     ]));
+    // create deployed instance of dex smart contract
     const dex = await Dex.new();
+    // add tokens to dex smart contract instance
     await Promise.all([
       dex.addToken(DAI ,dai.address),
       dex.addToken(BAT ,bat.address),
@@ -26,7 +29,10 @@ contract('Dex', (accounts) => {
       dex.addToken(ZRX ,zrx.address)
     ]);
 
+    // create amount variable
     const amount = web3.utils.toWei('1000');
+
+    // create function to seed tokens to a trader
     const seedTokenBalance = async (token, trader) => {
       await token.faucet(trader, amount);
       await token.approve(
@@ -36,12 +42,14 @@ contract('Dex', (accounts) => {
       );
     };
 
+    // seed trader 1 with tokens
     await Promise.all(
       [dai, bat, rep, zrx].map(
         token => seedTokenBalance(token, trader1)
       )
     );
 
+    // seed trader 2 with tokens
     await Promise.all(
       [dai, bat, rep, zrx].map(
         token => seedTokenBalance(token, trader2)
