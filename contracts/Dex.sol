@@ -11,7 +11,7 @@ contract Dex {
   address public admin;
   bytes32[] public tokenList;
 
-  constructor() {
+  constructor() public {
     admin = msg.sender;
   }
 
@@ -20,7 +20,7 @@ contract Dex {
     address tokenAddress)
     onlyAdmin()
     external {
-    token[ticker] = Token(ticker, tokenAddress);
+    tokens[ticker] = Token(ticker, tokenAddress);
     tokenList.push(ticker);
   }
 
