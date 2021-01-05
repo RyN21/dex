@@ -7,7 +7,12 @@ contract Dex {
     address tokenAddress;
   }
 
+  address public admin;
   bytes32[] public tokenList;
+
+  constructor() {
+    admin = msg.sender;
+  }
 
   function addToken(
     bytes32 ticker,
