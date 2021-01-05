@@ -7,13 +7,14 @@ import '@openzeppelin/contracts/math/SafeMath.sol';
 contract Dex {
 
   struct Token {
+    // byte32 at most 32 characters long and byte32 is easier to manipulate than strings
     bytes32 ticker;
     address tokenAddress;
   }
 
   mapping(bytes32 => Token) public tokens;
-  address public admin;
   bytes32[] public tokenList;
+  address public admin;
   mapping(address => mapping(bytes32 => uint)) public traderBalances;
 
   constructor() public {
