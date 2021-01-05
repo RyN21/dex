@@ -7,6 +7,7 @@ contract Dex {
     address tokenAddress;
   }
 
+  mapping(bytes32 => Token) public tokens;
   address public admin;
   bytes32[] public tokenList;
 
