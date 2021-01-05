@@ -52,6 +52,7 @@ contract Dex {
       traderBalances[msg.sender][ticker] >= amount,
       'Balance too low.'
     );
+    traderBalances[msg.sender][ticker] -= amount;
   }
 
   modifier tokenExists(bytes32 ticker) {
