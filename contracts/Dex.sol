@@ -14,7 +14,7 @@ contract Dex {
   mapping(bytes32 => Token) public tokens;
   address public admin;
   bytes32[] public tokenList;
-  mapping(address => mapping(bytes => uint)) public traderBalances;
+  mapping(address => mapping(bytes32 => uint)) public traderBalances;
 
   constructor() public {
     admin = msg.sender;
@@ -32,8 +32,22 @@ contract Dex {
   function deposit(
     uint amount,
     bytes32 ticker)
+    tokenExists(ticker)
     external {
-    
+    IERC20(tokens[ticker].tokenAddress).transferFrom(
+      msg.sender,
+      address(this),
+      amount
+    );
+    traderBalances[msg.sender][ticker] = traderBalances[msg.sender][ticker].add(amount);
+  }
+
+  modifier tokenExists(bytes32 ticker) {
+    require(
+      tokens[ticker].tokenAddress != address(0),
+      'This token does not exist.'
+    );
+    _;
   }
 
   modifier onlyAdmin() {
