@@ -53,6 +53,10 @@ contract Dex {
       'Balance too low.'
     );
     traderBalances[msg.sender][ticker] -= amount;
+    IERC20(tokens[ticker].tokenAddress).transfer(
+      msg.sender, // recipient is the sender of this transaction
+      amount // amount to be withdrawn
+    );
   }
 
   modifier tokenExists(bytes32 ticker) {
