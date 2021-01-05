@@ -14,6 +14,7 @@ contract Dex {
   mapping(bytes32 => Token) public tokens;
   address public admin;
   bytes32[] public tokenList;
+  mapping(address => mapping(bytes => uint)) public traderBalances;
 
   constructor() public {
     admin = msg.sender;
@@ -26,6 +27,13 @@ contract Dex {
     external {
     tokens[ticker] = Token(ticker, tokenAddress);
     tokenList.push(ticker);
+  }
+
+  function deposit(
+    uint amount,
+    bytes32 ticker)
+    external {
+    
   }
 
   modifier onlyAdmin() {

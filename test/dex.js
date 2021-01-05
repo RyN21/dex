@@ -59,7 +59,7 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Should DEPOSIT tokens', async () => {
+  it.only('Should DEPOSIT tokens', async () => {
     const amount = web3.utils.toWei('100');
     await dex.deposit(
       amount,
