@@ -36,11 +36,11 @@ contract Dex {
     tokenExists(ticker)
     external {
     IERC20(tokens[ticker].tokenAddress).transferFrom(
-      msg.sender,
-      address(this),
-      amount
+      msg.sender, // sends from sender
+      address(this), // sends to this smart contract
+      amount // amount to be sent
     );
-    traderBalances[msg.sender][ticker] = traderBalances[msg.sender][ticker].add(amount);
+    traderBalances[msg.sender][ticker] += amount;
   }
 
   modifier tokenExists(bytes32 ticker) {
