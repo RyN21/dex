@@ -43,6 +43,17 @@ contract Dex {
     traderBalances[msg.sender][ticker] += amount;
   }
 
+  function withdraw(
+    uint amount,
+    bytes32 ticker)
+    tokenExists(ticker)
+    external {
+    require(
+      traderBalances[msg.sender][ticker] >= amount,
+      'Balance too low.'
+    );
+  }
+
   modifier tokenExists(bytes32 ticker) {
     require(
       tokens[ticker].tokenAddress != address(0),
