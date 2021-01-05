@@ -17,4 +17,9 @@ contract Dex {
     token[ticker] = Token(ticker, tokenAddress);
     tokenList.push(ticker);
   }
-};
+
+  modifier onlyAdmin() {
+    require(msg.sender == admin, 'only admin.');
+    _;
+  }
+}
