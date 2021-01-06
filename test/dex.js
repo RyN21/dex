@@ -55,6 +55,8 @@ contract('Dex', (accounts) => {
     );
   });
 
+  // TEST Deposit function
+
   it('Should DEPOSIT tokens', async () => {
     const amount = web3.utils.toWei('100');
     await dex.deposit(
@@ -76,6 +78,8 @@ contract('Dex', (accounts) => {
       'This token does not exist.'
     );
   });
+
+  // TEST withdraw function
 
   it('Should WITHDRAW tokens', async () => {
     const amount = web3.utils.toWei('100');
@@ -125,4 +129,11 @@ contract('Dex', (accounts) => {
       'Balance too low.'
     );
   });
+
+  // TEST createLimitOrder function
+
+  it('Should create a limit order', async () => {
+    const amount = web3.utils.toWei('100');
+
+  })
 });
