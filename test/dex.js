@@ -138,19 +138,23 @@ contract('Dex', (accounts) => {
   // TEST createLimitOrder function
 
   it('Should create limit order', async () => {
+    // deposit into smart contract
     await dex.deposit(
-      amount,
+      web3.utils.toWei('100'),
       DAI,
       {from: trader1}
     );
 
+    // create limit order with arguments
     await dex.createLimitOrder(
-      REP,
-      web3.utils.toWei('10'),
-      10,
-      SIDE.BUY,
-      {from: trader1}
+      REP, // ticker symbol
+      web3.utils.toWei('10'), // amount of token
+      10, // price of token
+      SIDE.BUY, // type of order
+      {from: trader1} // from trader
     );
 
+    const buyOrders = await dex.getOrders(REP, SIDE.BUY);
+    const sellOrders = await dex.getOrders(REP, SIDE.SELL);
   })
 });
