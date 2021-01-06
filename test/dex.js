@@ -30,10 +30,8 @@ contract('Dex', (accounts) => {
       dex.addToken(REP ,rep.address),
       dex.addToken(ZRX ,zrx.address)
     ]);
-
     // create amount variable
     const amount = web3.utils.toWei('1000');
-
     // create function to seed tokens to a trader
     const seedTokenBalance = async (token, trader) => {
       await token.faucet(trader, amount);
@@ -43,14 +41,12 @@ contract('Dex', (accounts) => {
         {from: trader}
       );
     };
-
     // seed trader 1 with tokens
     await Promise.all(
       [dai, bat, rep, zrx].map(
         token => seedTokenBalance(token, trader1)
       )
     );
-
     // seed trader 2 with tokens
     await Promise.all(
       [dai, bat, rep, zrx].map(
@@ -66,14 +62,13 @@ contract('Dex', (accounts) => {
       DAI,
       {from: trader1}
     );
-
     const balance = await dex.traderBalances(trader1, DAI);
     assert(balance.toString() === amount);
   });
 
   it('Should NOT DEPOSIT token if token does not exist', async () => {
     await expectRevert(
-      await dex.deposit(
+      dex.deposit(
         web3.utils.toWei('100'),
         web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
         {from: trader1}
@@ -82,21 +77,18 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it.only('Should WITHDRAW tokens', async () => {
+  it('Should WITHDRAW tokens', async () => {
     const amount = web3.utils.toWei('100');
-
     await dex.deposit(
       amount,
       DAI,
       {from: trader1}
     );
-
     await dex.withdraw(
       amount,
       DAI,
       {from: trader1}
     );
-
     const [balanceDex, balanceDai] = await Promise.all([
       dex.traderBalances(trader1, DAI),
       dai.balanceOf(trader1)
@@ -108,7 +100,7 @@ contract('Dex', (accounts) => {
 
   it('Should NOT WITHDRAW token if token does not exist', async () => {
     await expectRevert(
-      await dex.withdraw(
+      dex.withdraw(
         web3.utils.toWei('100'),
         web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
         {from: trader1}
@@ -118,6 +110,7 @@ contract('Dex', (accounts) => {
   });
 
   it('Shoult not WITHDRAW tokens if balance is too low', async () => {
+    const amount = web3.utils.toWei('100');
     await dex.deposit(
       amount,
       DAI,
