@@ -156,5 +156,12 @@ contract('Dex', (accounts) => {
 
     const buyOrders = await dex.getOrders(REP, SIDE.BUY);
     const sellOrders = await dex.getOrders(REP, SIDE.SELL);
+
+    assert(buyOrders.length === 1);
+    assert(buyOrders.length === 0);
+    assert(buyOrders[0].trader === trader1);
+    assert(buyOrders[0].ticker === web3.utils.padRight(REP, 64)));
+    assert(buyOrders[0].price === '10');
+    assert(buyOrders[0].amount === web3.utils.toWei('10'));
   })
 });
