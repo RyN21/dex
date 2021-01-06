@@ -5,6 +5,11 @@ const Rep = artifacts.require('mocks/Rep.sol');
 const Zrx = artifacts.require('mocks/Zrx.sol');
 const Dex = artifacts.require('Dex.sol');
 
+const SIDE = {
+  BUY: 0,
+  SELL: 1
+};
+
 contract('Dex', (accounts) => {
   // create mock token variables and dex
   let dai, bat, rep, zrx, dex;
@@ -132,8 +137,20 @@ contract('Dex', (accounts) => {
 
   // TEST createLimitOrder function
 
-  it('Should create a limit order', async () => {
-    const amount = web3.utils.toWei('100');
+  it('Should create limit order', async () => {
+    await dex.deposit(
+      amount,
+      DAI,
+      {from: trader1}
+    );
+
+    await dex.createLimitOrder(
+      REP,
+      web3.utils.toWei('10'),
+      10,
+      SIDE.BUY,
+      {from: trader1}
+    );
 
   })
 });
