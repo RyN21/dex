@@ -170,6 +170,7 @@ contract('Dex', (accounts) => {
   });
 
   it('Should place new limnit orders in the correct place in orderList', async () => {
+    // trader deposits
     await dex.deposit(
       web3.utils.toWei('100'),
       DAI,
@@ -181,6 +182,7 @@ contract('Dex', (accounts) => {
       {from: trader2}
     );
 
+    // created orders
     await dex.createLimitOrder(
       REP,
       web3.utils.toWei('10'),
@@ -203,9 +205,11 @@ contract('Dex', (accounts) => {
       {from: trader2}
     );
 
+    // order lists
     const buyOrders = await dex.getOrders(REP, SIDE.BUY);
     const sellOrders = await dex.getOrders(REP, SIDE.SELL);
 
+    // assertions
     assert(buyOrders.length === 3);
     assert(buyOrders.length === 0);
     assert(buyOrders[0].trader === trader2);
