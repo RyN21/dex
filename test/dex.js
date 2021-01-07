@@ -215,6 +215,6 @@ contract('Dex', (accounts) => {
     assert(buyOrders[0].trader === trader2);
     assert(buyOrders[1].trader === trader1);
     assert(buyOrders[2].trader === trader2);
-    assert(buyOrders[2].amount === '9');
+    assert(buyOrders[2].price === '9');
   });
 });
