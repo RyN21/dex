@@ -165,5 +165,52 @@ contract('Dex', (accounts) => {
     assert(buyOrders[0].ticker === web3.utils.padRight(REP, 64)));
     assert(buyOrders[0].price === '10');
     assert(buyOrders[0].amount === web3.utils.toWei('10'));
-  })
+
+    // Add another order to buyOrders and expect it to be in the correct place of the list
+  });
+
+  it('Should place new limnit orders in the correct place in orderList', async () => {
+    await dex.deposit(
+      web3.utils.toWei('100'),
+      DAI,
+      {from: trader1}
+    );
+    await dex.deposit(
+      web3.utils.toWei('200'),
+      DAI,
+      {from: trader2}
+    );
+
+    await dex.createLimitOrder(
+      REP,
+      web3.utils.toWei('10'),
+      10,
+      SIDE.BUY,
+      {from: trader1}
+    );
+    await dex.createLimitOrder(
+      REP,
+      web3.utils.toWei('10'),
+      11,
+      SIDE.BUY,
+      {from: trader2}
+    );
+    await dex.createLimitOrder(
+      REP,
+      web3.utils.toWei('10'),
+      9,
+      SIDE.BUY,
+      {from: trader2}
+    );
+
+    const buyOrders = await dex.getOrders(REP, SIDE.BUY);
+    const sellOrders = await dex.getOrders(REP, SIDE.SELL);
+
+    assert(buyOrders.length === 3);
+    assert(buyOrders.length === 0);
+    assert(buyOrders[0].trader === trader2);
+    assert(buyOrders[1].trader === trader1);
+    assert(buyOrders[2].trader === trader2);
+    assert(buyOrders[2].amount === '9');
+  });
 });
