@@ -66,7 +66,7 @@ contract Dex {
     bytes32 ticker,
     uint amoun,
     uint price,
-    enum orderType)
+    Side side)
     tokenExists(ticker)
     external {
 
