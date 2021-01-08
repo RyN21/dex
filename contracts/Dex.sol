@@ -24,6 +24,15 @@ contract Dex {
     admin = msg.sender;
   }
 
+  function getOrders(
+    bytes32 ticker,
+    Side side)
+    external
+    view
+    returns(Order[] memory) {
+      return orderBook[ticker][uint(side)];
+    }
+
   function addToken(
     bytes32 ticker,
     address tokenAddress)
