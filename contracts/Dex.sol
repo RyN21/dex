@@ -107,8 +107,7 @@ contract Dex {
         'DAI balance is too low.'
       );
     }
-    // cast side enum into an integer
-    Order[] storage orders = orderBook[ticker][uint(side)];
+    Order[] storage orders = orderBook[ticker][uint(side)]; // cast side enum into an integer
     orders.push(Order(
       nextOrderId,
       side,
@@ -117,7 +116,23 @@ contract Dex {
       0,
       price,
       now
-    ))
+    ));
+
+    uint i = orders.length - 1;
+    while(i > 0) {
+      if(side = Side.BUY && orders[i - 1].price > orders[i].price) {
+        break;
+      }
+      if(side = Side.SELL && orders[i - 1].price < orders[i].price) {
+        break;
+      }
+
+      Order memory order = orders[i - 1];
+      orders[i - 1] = orders[i];
+      orders[i] = order;
+      i--;
+    }
+    nextOrderId++;
   }
 
   modifier tokenExists(bytes32 ticker) {
