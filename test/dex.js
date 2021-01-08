@@ -260,4 +260,8 @@ contract('Dex', (accounts) => {
       'Token balance is too low.'
     );
   });
+
+  it('Should NOT sell create limit order if token balance is too low', async => {
+
+  });
 });
