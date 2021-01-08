@@ -11,7 +11,7 @@ contract Dex {
   enum Side { BUY, SELL }
 
   struct Token {
-    // byte32 at most 32 characters long and byte32 is easier to manipulate than strings
+    // bytes32 at most 32 characters long and bytes32 is easier to manipulate than strings
     bytes32 ticker;
     address tokenAddress;
   }
@@ -35,6 +35,7 @@ contract Dex {
   address public admin;
   // variable to keep track of what is the current order id
   uint public nextOrderId;
+  bytes32 constant DAI = bytes32('DAI');
 
   constructor() public {
     admin = msg.sender;
@@ -89,19 +90,35 @@ contract Dex {
 
   function createLimitOrder(
     bytes32 ticker,
-    uint amoun,
+    uint amount,
     uint price,
     Side side)
     tokenExists(ticker)
     external {
-
+    if(side == Side.SELL) {
+      require(
+        traderBalances[msg.sender][ticker] >= amount,
+        'Token balance is too low.'
+      );
+    } else {
+      require(
+        // amount multiplied by price
+        traderBalances[msg.sender][DAI] >= amount.mul(price),
+        'DAI balance is too low.'
+      );
     }
+  }
 
   modifier tokenExists(bytes32 ticker) {
     require(
       tokens[ticker].tokenAddress != address(0),
       'This token does not exist.'
     );
+    _;
+  }
+
+  modifier tokenIsNotDai(bytes32 ticker) {
+    require(ticker != DAI, 'Cannot trade DAI');
     _;
   }
 

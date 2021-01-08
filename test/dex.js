@@ -238,7 +238,7 @@ contract('Dex', (accounts) => {
         SIDE.BUY,
         {from:trader1}
       ),
-      'Cannot trade DIA.'
+      'Cannot trade DAI.'
     );
   });
 
