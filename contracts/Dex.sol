@@ -121,10 +121,10 @@ contract Dex {
 
     uint i = orders.length - 1;
     while(i > 0) {
-      if(side = Side.BUY && orders[i - 1].price > orders[i].price) {
+      if(side == Side.BUY && orders[i - 1].price > orders[i].price) {
         break;
       }
-      if(side = Side.SELL && orders[i - 1].price < orders[i].price) {
+      if(side == Side.SELL && orders[i - 1].price < orders[i].price) {
         break;
       }
 
