@@ -241,4 +241,8 @@ contract('Dex', (accounts) => {
       'Cannot trade DIA.'
     );
   });
+
+  it('Should NOT create limit order if token balance is too low', async => {
+  
+  });
 });
