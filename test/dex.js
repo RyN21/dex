@@ -229,7 +229,7 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Should NOT create limit order if token is DAI', async => {
+  it('Should NOT create limit order if token is DAI', async () => {
     await expectRevert(
       dex.createLimitOrder(
         DAI,
@@ -242,7 +242,7 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Should NOT create limit sell order if token balance is too low', async => {
+  it('Should NOT create limit sell order if token balance is too low', async () => {
     await dex.deposit(
       web3.utils.toWei('99'),
       REP,
@@ -261,7 +261,7 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Should NOT create limit buy order if DAI balance is too low', async => {
+  it('Should NOT create limit buy order if DAI balance is too low', async () => {
     await dex.deposit(
       web3.utils.toWei('99'),
       DAI,
