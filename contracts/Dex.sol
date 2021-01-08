@@ -29,7 +29,7 @@ contract Dex {
   mapping(bytes32 => Token) public tokens;
   bytes32[] public tokenList;
   mapping(address => mapping(bytes32 => uint)) public traderBalances;
-  mapping(bytes => mapping(uint => Order[])) public orderBook;
+  mapping(bytes32 => mapping(uint => Order[])) public orderBook;
   address public admin;
 
   constructor() public {
