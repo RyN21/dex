@@ -15,6 +15,17 @@ contract Dex {
     address tokenAddress;
   }
 
+  struct Order {
+    uint id;
+    address trader;
+    Side side;
+    bytes32 ticker;
+    uint amount;
+    uint filled;
+    uint price;
+    uint date;
+  }
+
   mapping(bytes32 => Token) public tokens;
   bytes32[] public tokenList;
   address public admin;
