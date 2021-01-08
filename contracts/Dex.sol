@@ -28,8 +28,9 @@ contract Dex {
 
   mapping(bytes32 => Token) public tokens;
   bytes32[] public tokenList;
-  address public admin;
   mapping(address => mapping(bytes32 => uint)) public traderBalances;
+  mapping(bytes => mapping(uint => Order[])) public orderBook;
+  address public admin;
 
   constructor() public {
     admin = msg.sender;
