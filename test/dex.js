@@ -238,7 +238,7 @@ contract('Dex', (accounts) => {
         SIDE.BUY,
         {from:trader1}
       ),
-      'This token does not exist.'
+      'Cannot trade DIA.'
     );
   });
 });
