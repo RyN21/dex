@@ -102,11 +102,22 @@ contract Dex {
       );
     } else {
       require(
-        // amount multiplied by price
+        // mul = amount multiplied by price
         traderBalances[msg.sender][DAI] >= amount.mul(price),
         'DAI balance is too low.'
       );
     }
+    // cast side enum into an integer
+    Order[] storage orders = orderBook[ticker][uint(side)];
+    orders.push(Order(
+      nextOrderId,
+      side,
+      ticker,
+      amount,
+      0,
+      price,
+      now
+    ))
   }
 
   modifier tokenExists(bytes32 ticker) {
