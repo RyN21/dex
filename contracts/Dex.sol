@@ -127,11 +127,22 @@ contract Dex {
         break;
       }
 
+      // save previous order element in in memory
       Order memory order = orders[i - 1];
+
+      // orders[i] == current element
+      // order == previous element
+
+      // swap current order element to previous index
       orders[i - 1] = orders[i];
+
+      // swap previous order element to next index
       orders[i] = order;
+
+      // decrement i
       i--;
     }
+    // increment nextOrderId
     nextOrderId++;
   }
 
