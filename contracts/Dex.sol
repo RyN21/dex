@@ -110,6 +110,7 @@ contract Dex {
     Order[] storage orders = orderBook[ticker][uint(side)]; // cast side enum into an integer
     orders.push(Order(
       nextOrderId,
+      msg.sender,
       side,
       ticker,
       amount,
