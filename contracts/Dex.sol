@@ -30,8 +30,11 @@ contract Dex {
   mapping(bytes32 => Token) public tokens;
   bytes32[] public tokenList;
   mapping(address => mapping(bytes32 => uint)) public traderBalances;
+  // for orderBook, uint will represent the enum SIDE: 0 = BUY or 1 = SELL
   mapping(bytes32 => mapping(uint => Order[])) public orderBook;
   address public admin;
+  // variable to keep track of what is the current order id
+  uint public nextOrderId;
 
   constructor() public {
     admin = msg.sender;
