@@ -5,6 +5,10 @@ import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract Dex {
 
+  using SafeMath for uint;
+
+  enum Side { BUY, SELL }
+
   struct Token {
     // byte32 at most 32 characters long and byte32 is easier to manipulate than strings
     bytes32 ticker;
