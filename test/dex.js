@@ -160,7 +160,7 @@ contract('Dex', (accounts) => {
 
     // test limit order was created through buyOrders list
     assert(buyOrders.length === 1);
-    assert(buyOrders.length === 0);
+    assert(sellOrders.length === 0);
     assert(buyOrders[0].trader === trader1);
     assert(buyOrders[0].ticker === web3.utils.padRight(REP, 64));
     assert(buyOrders[0].price === '10');
@@ -209,7 +209,7 @@ contract('Dex', (accounts) => {
 
     // assertions
     assert(buyOrders.length === 3);
-    assert(buyOrders.length === 0);
+    assert(sellOrders.length === 0);
     assert(buyOrders[0].trader === trader2);
     assert(buyOrders[1].trader === trader1);
     assert(buyOrders[2].trader === trader2);
