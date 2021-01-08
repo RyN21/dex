@@ -17,7 +17,7 @@ contract('Dex', (accounts) => {
   const [trader1, trader2] = [accounts[1], accounts[2]];
   // produce tickers for through Ascii
   const [DAI, BAT, REP, ZRX] = ['DAI', 'BAT', 'REP', 'ZRX']
-    .map(ticker => web3.utils.FromAscii(ticker));
+    .map(ticker => web3.utils.fromAscii(ticker));
 
   beforeEach(async() => {
     ([dai, bat, rep, zrx] = await Promise.all([
@@ -77,7 +77,7 @@ contract('Dex', (accounts) => {
     await expectRevert(
       dex.deposit(
         web3.utils.toWei('100'),
-        web3.utils.FromAscii('TOKEN-DOES-NOT-EXIST'),
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
         {from: trader1}
       ),
       'This token does not exist.'
@@ -111,7 +111,7 @@ contract('Dex', (accounts) => {
     await expectRevert(
       dex.withdraw(
         web3.utils.toWei('100'),
-        web3.utils.FromAscii('TOKEN-DOES-NOT-EXIST'),
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
         {from: trader1}
       ),
       'This token does not exist.'
@@ -219,7 +219,7 @@ contract('Dex', (accounts) => {
   it('Should NOT create limit order if token does not exist', async () => {
     await expectRevert(
       dex.createLimitOrder(
-        web3.utils.FromAscii('TOKEN-DOES-NOT-EXIST'),
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
         web3.utils.toWei('1000'),
         10,
         SIDE.BUY,
