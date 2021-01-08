@@ -58,6 +58,16 @@ contract Dex {
     );
   }
 
+  function createLimitOrder(
+    bytes32 ticker,
+    uint amoun,
+    uint price,
+    enum orderType)
+    tokenExists(ticker)
+    external {
+
+    }
+
   modifier tokenExists(bytes32 ticker) {
     require(
       tokens[ticker].tokenAddress != address(0),
