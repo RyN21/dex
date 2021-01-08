@@ -137,7 +137,7 @@ contract('Dex', (accounts) => {
 
   // TEST createLimitOrder function
 
-  it.only('Should create limit order', async () => {
+  it('Should create limit order', async () => {
     // deposit into smart contract
     await dex.deposit(
       web3.utils.toWei('100'),

@@ -94,6 +94,7 @@ contract Dex {
     uint price,
     Side side)
     tokenExists(ticker)
+    tokenIsNotDai(ticker)
     external {
     if(side == Side.SELL) {
       require(
