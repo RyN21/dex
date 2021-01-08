@@ -243,6 +243,11 @@ contract('Dex', (accounts) => {
   });
 
   it('Should NOT create limit order if token balance is too low', async => {
-  
+    await dex.deposit(
+      web3.utils.toWei('99'),
+      REP,
+      {from: trader1}
+    );
+
   });
 });
