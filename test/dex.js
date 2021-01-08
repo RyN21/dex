@@ -216,7 +216,7 @@ contract('Dex', (accounts) => {
     assert(buyOrders[2].price === '9');
   });
 
-  it('Should NOT create limit order if token does not exist', async => {
+  it('Should NOT create limit order if token does not exist', async () => {
     await expectRevert(
       dex.createLimitOrder(
         web3.utils.FromAscii('TOKEN-DOES-NOT-EXIST'),
