@@ -165,8 +165,6 @@ contract('Dex', (accounts) => {
     assert(buyOrders[0].ticker === web3.utils.padRight(REP, 64)));
     assert(buyOrders[0].price === '10');
     assert(buyOrders[0].amount === web3.utils.toWei('10'));
-
-    // Add another order to buyOrders and expect it to be in the correct place of the list
   });
 
   it('Should place new limnit orders in the correct place in orderList', async () => {
@@ -216,5 +214,9 @@ contract('Dex', (accounts) => {
     assert(buyOrders[1].trader === trader1);
     assert(buyOrders[2].trader === trader2);
     assert(buyOrders[2].price === '9');
+  });
+
+  it('Should NOT create limit order if token does not exist', async => {
+
   });
 });
