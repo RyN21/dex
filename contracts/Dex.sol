@@ -148,6 +148,10 @@ contract Dex {
     nextOrderId++;
   }
 
+  function createMarketOrder() {
+
+  }
+
   modifier tokenExists(bytes32 ticker) {
     require(
       tokens[ticker].tokenAddress != address(0),

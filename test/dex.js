@@ -282,7 +282,7 @@ contract('Dex', (accounts) => {
 
   // TEST createMarketOrder function
 
-  it('Should create sell market order', async () => {
+  it.only('Should create sell market order', async () => {
     // Fund trader 1 and create limit order
     await dex.deposit(
       web3.utils.toWei('100'),
