@@ -378,5 +378,29 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Shoule NOT create market ')
+  it('Shoule NOT create market order if  DAI balance is too low', async () => {
+    await dex.deposit(
+      web3.utils.toWei('100'),
+      REP,
+      {from: trader1}
+    );
+
+    await dex.createLimitOrder(
+      REP,
+      web3.utils.toWei('100'),
+      10,
+      SIDE.BUY,
+      {from: trader1}
+    );
+
+    await expectRevert(
+      dex.createMarketOrder(
+        REP,
+        web3.utils.toWei('100'),
+        SIDE.SELL,
+        {from: trader2}
+      ),
+      'DAI balance is too low.'
+    );
+  });
 });
