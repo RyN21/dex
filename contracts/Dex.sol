@@ -148,8 +148,18 @@ contract Dex {
     nextOrderId++;
   }
 
-  function createMarketOrder() {
-
+  function createMarketOrder(
+    bytes32 ticker,
+    uint amount,
+    Side side)
+    external {
+    if(side == Side.SELL) {
+      require(
+        traderBalances[msg.sender][ticker] >= amount,
+        'Token balance is too low.'
+      );
+    }
+    
   }
 
   modifier tokenExists(bytes32 ticker) {
