@@ -60,7 +60,9 @@ contract('Dex', (accounts) => {
     );
   });
 
+  // =================================
   // TEST Deposit function
+  // =================================
 
   it('Should DEPOSIT tokens', async () => {
     const amount = web3.utils.toWei('100');
@@ -84,7 +86,9 @@ contract('Dex', (accounts) => {
     );
   });
 
+  // =================================
   // TEST withdraw function
+  // =================================
 
   it('Should WITHDRAW tokens', async () => {
     const amount = web3.utils.toWei('100');
@@ -135,7 +139,9 @@ contract('Dex', (accounts) => {
     );
   });
 
+  // =================================
   // TEST createLimitOrder function
+  // =================================
 
   it('Should create limit order', async () => {
     // deposit into smart contract
@@ -280,7 +286,9 @@ contract('Dex', (accounts) => {
     );
   });
 
+  // =================================
   // TEST createMarketOrder function
+  // =================================
 
   it.only('Should create sell market order', async () => {
     // Fund trader 1 and create limit order
@@ -337,6 +345,18 @@ contract('Dex', (accounts) => {
         {from:trader1}
       ),
       'This token does not exist.'
+    );
+  });
+
+  it('Should NOT create limit order if token is DAI', async () => {
+    await expectRevert(
+      dex.createLimitOrder(
+        DAI,
+        web3.utils.toWei('1000'),
+        SIDE.BUY,
+        {from:trader1}
+      ),
+      'Cannot trade DAI.'
     );
   });
 });
