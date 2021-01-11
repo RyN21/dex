@@ -318,9 +318,8 @@ contract('Dex', (accounts) => {
       dex.traderBalances(trader2, REP)
     ]);
 
-    // need to create a getOrders function to retrive list of orders
-    const buyOrders = await dex.getOrders(REP, SIDE.BUY);
-    const sellOrders = await dex.getOrders(REP, SIDE.SELL);
+    // Orders for buy side
+    const orders = await dex.getOrders(REP, SIDE.BUY);
 
     // test limit order was created through buyOrders list
     assert(buyOrders.length === 1);
