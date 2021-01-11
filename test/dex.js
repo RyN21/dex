@@ -327,4 +327,16 @@ contract('Dex', (accounts) => {
     assert(balance[2].toString() === web3.utils.toWei('50'));
     assert(balance[3].toString() === web3.utils.toWei('95'));
   });
+
+  it('Should NOT create market order if token does not exist', async () => {
+    await expectRevert(
+      dex.createMarketOrder(
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
+        web3.utils.toWei('1000'),
+        SIDE.BUY,
+        {from:trader1}
+      ),
+      'This token does not exist.'
+    );
+  });
 });
