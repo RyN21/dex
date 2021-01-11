@@ -282,20 +282,19 @@ contract('Dex', (accounts) => {
 
   // TEST createMarketOrder function
 
-  it('Should create market order', async () => {
+  it('Should create sell market order', async () => {
     // Fund trader 1 and create limit order
     await dex.deposit(
       web3.utils.toWei('100'),
       DAI,
       {from: trader1}
     );
-
     await dex.createLimitOrder(
-      REP, // ticker symbol
-      web3.utils.toWei('10'), // amount of token
+      REP,
+      web3.utils.toWei('10'),
       10,
-      SIDE.BUY, // type of order
-      {from: trader1} // from trader
+      SIDE.BUY,
+      {from: trader1}
     );
 
     // Fund trader 2 and create market order
@@ -304,13 +303,20 @@ contract('Dex', (accounts) => {
       DAI,
       {from: trader2}
     );
-
     await dex.createMarketOrder(
-      REP, // ticker symbol
-      web3.utils.toWei('5'), // amount of token
-      SIDE.SELL, // type of order
-      {from: trader2} // from trader
+      REP,
+      web3.utils.toWei('5'),
+      SIDE.SELL,
+      {from: trader2}
     );
+
+    // Get balances
+    const balances = await Promise.all([
+      dex.traderBalances(trader1, DAI),
+      dex.traderBalances(trader1, REP),
+      dex.traderBalances(trader2, DAI),
+      dex.traderBalances(trader2, REP)
+    ]);
 
     // need to create a getOrders function to retrive list of orders
     const buyOrders = await dex.getOrders(REP, SIDE.BUY);
