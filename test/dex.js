@@ -279,4 +279,33 @@ contract('Dex', (accounts) => {
       'DAI balance is too low.'
     );
   });
+
+  // TEST createMarketOrder function
+
+  it('Should create market order', async () => {
+    await dex.deposit(
+      web3.utils.toWei('100'),
+      DAI,
+      {from: trader1}
+    );
+
+    await dex.createMarketOrder(
+      REP, // ticker symbol
+      web3.utils.toWei('10'), // amount of token
+      SIDE.BUY, // type of order
+      {from: trader1} // from trader
+    );
+
+    // need to create a getOrders function to retrive list of orders
+    const buyOrders = await dex.getOrders(REP, SIDE.BUY);
+    const sellOrders = await dex.getOrders(REP, SIDE.SELL);
+
+    // test limit order was created through buyOrders list
+    assert(buyOrders.length === 1);
+    assert(sellOrders.length === 0);
+    assert(buyOrders[0].trader === trader1);
+    assert(buyOrders[0].ticker === web3.utils.padRight(REP, 64));
+    assert(buyOrders[0].price === '10');
+    assert(buyOrders[0].amount === web3.utils.toWei('10'));
+  });
 });
