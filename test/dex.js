@@ -283,17 +283,33 @@ contract('Dex', (accounts) => {
   // TEST createMarketOrder function
 
   it('Should create market order', async () => {
+    // Fund trader 1 and create limit order
     await dex.deposit(
       web3.utils.toWei('100'),
       DAI,
       {from: trader1}
     );
 
-    await dex.createMarketOrder(
+    await dex.createLimitOrder(
       REP, // ticker symbol
       web3.utils.toWei('10'), // amount of token
+      10,
       SIDE.BUY, // type of order
       {from: trader1} // from trader
+    );
+
+    // Fund trader 2 and create market order
+    await dex.deposit(
+      web3.utils.toWei('100'),
+      DAI,
+      {from: trader2}
+    );
+
+    await dex.createMarketOrder(
+      REP, // ticker symbol
+      web3.utils.toWei('5'), // amount of token
+      SIDE.SELL, // type of order
+      {from: trader2} // from trader
     );
 
     // need to create a getOrders function to retrive list of orders
