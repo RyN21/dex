@@ -348,9 +348,9 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Should NOT create limit order if token is DAI', async () => {
+  it('Should NOT create market order if token is DAI', async () => {
     await expectRevert(
-      dex.createLimitOrder(
+      dex.createMarketOrder(
         DAI,
         web3.utils.toWei('1000'),
         SIDE.BUY,
