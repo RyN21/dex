@@ -359,4 +359,22 @@ contract('Dex', (accounts) => {
       'Cannot trade DAI.'
     );
   });
+
+  it('Should NOT create market sell order if token balance is too low', async () => {
+    await dex.deposit(
+      web3.utils.toWei('99'),
+      REP,
+      {from: trader1}
+    );
+
+    await expectRevert(
+      dex.createMarketOrder(
+        REP,
+        web3.utils.toWei('100'),
+        SIDE.SELL,
+        {from: trader1}
+      ),
+      'Token balance is too low.'
+    );
+  });
 });
