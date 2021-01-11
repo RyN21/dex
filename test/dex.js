@@ -300,7 +300,7 @@ contract('Dex', (accounts) => {
     // Fund trader 2 and create market order
     await dex.deposit(
       web3.utils.toWei('100'),
-      DAI,
+      REP,
       {from: trader2}
     );
     await dex.createMarketOrder(
@@ -321,12 +321,10 @@ contract('Dex', (accounts) => {
     // Orders for buy side
     const orders = await dex.getOrders(REP, SIDE.BUY);
 
-    // test limit order was created through buyOrders list
-    assert(buyOrders.length === 1);
-    assert(sellOrders.length === 0);
-    assert(buyOrders[0].trader === trader1);
-    assert(buyOrders[0].ticker === web3.utils.padRight(REP, 64));
-    assert(buyOrders[0].price === '10');
-    assert(buyOrders[0].amount === web3.utils.toWei('10'));
+    assert(orders[0].filled === web3.utils.toWei('5'));
+    assert(balance[0].toString() === web3.utils.toWei('50'));
+    assert(balance[1].toString() === web3.utils.toWei('5'));
+    assert(balance[2].toString() === web3.utils.toWei('50'));
+    assert(balance[3].toString() === web3.utils.toWei('95'));
   });
 });
