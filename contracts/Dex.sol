@@ -175,7 +175,7 @@ contract Dex {
       );
     }
     // if side == Side.BUY then we want the SELL orders otherwhise we want the BUY orders
-    Order[] storage orders = orderBook[ticker][side == Side.BUY ? Side.SELL : Side.BUY]
+    Order[] storage orders = orderBook[ticker][uint (side == Side.BUY ? Side.SELL : Side.BUY)]
 
   }
 
