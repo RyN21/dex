@@ -48,7 +48,7 @@ contract Dex {
     uint amount,
     uint price,
     uint date
-  )
+  );
 
   constructor() public {
     admin = msg.sender;
@@ -165,6 +165,7 @@ contract Dex {
     bytes32 ticker,
     uint amount,
     Side side)
+    tokenExists(ticker)
     external {
     if(side == Side.SELL) {
       require(
