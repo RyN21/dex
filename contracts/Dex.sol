@@ -35,7 +35,20 @@ contract Dex {
   address public admin;
   // variable to keep track of what is the current order id
   uint public nextOrderId;
+  uint public nextTradeId;
   bytes32 constant DAI = bytes32('DAI');
+
+  event NewTrade(
+    uint tradeId,
+    uint orderId,
+    // indexed: filter the events on the front end
+    bytes32 indexed ticker,
+    address indexed trader1,
+    address indexed trader2,
+    uint amount,
+    uint price,
+    uint date
+  )
 
   constructor() public {
     admin = msg.sender;
@@ -159,7 +172,7 @@ contract Dex {
         'Token balance is too low.'
       );
     }
-    
+
   }
 
   modifier tokenExists(bytes32 ticker) {
