@@ -13,4 +13,9 @@ module.exports = async function (deployer) {
   await Promise.all(
     [Dai, Bat, Rep, Zrx, Dex].map(contract => deployer.deploy(contract))
   );
+
+  // add promise to get the pointers to all the deployed instances
+  const [dai, bat, rep, zrx, dex] = await Promise.all(
+    [Dai, Bat, Rep, Zrx, Dex].map(contract => contract.deployed())
+  );
 };
