@@ -54,4 +54,14 @@ module.exports = async function (deployer, _network, accounts) {
       token => seedTokenBalance(token, trader2)
     )
   );
+  await Promise.all(
+    [dai, bat, rep, zrx].map(
+      token => seedTokenBalance(token, trader3)
+    )
+  );
+  await Promise.all(
+    [dai, bat, rep, zrx].map(
+      token => seedTokenBalance(token, trader4)
+    )
+  );
 };
