@@ -1,5 +1,13 @@
-const Dex = artifacts.require("Dex");
+const Dai = artifacts.require('mocks/Dai.sol');
+const Bat = artifacts.require('mocks/Bat.sol');
+const Rep = artifacts.require('mocks/Rep.sol');
+const Zrx = artifacts.require('mocks/Zrx.sol');
+const Dex = artifacts.require('Dex.sol');
 
-module.exports = function (deployer) {
-  deployer.deploy(Dex);
+// define all bytes32 representation of each token
+const [DAI, BAT, REP, ZRX] = ['DAI', 'BAT', 'REP', 'ZRX']
+.map(ticker => web3.utils.fromAscii(ticker));
+
+module.exports = async function (deployer) {
+
 };
