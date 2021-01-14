@@ -177,7 +177,12 @@ contract Dex {
     // if side == Side.BUY then we want the SELL orders otherwhise we want the BUY orders
     // cast into integer so that we can access the correct key in the order book as an integer
     Order[] storage orders = orderBook[ticker][uint (side == Side.BUY ? Side.SELL : Side.BUY)]
+    uint i;
+    uint remaining = amount;
 
+    while(i < orders.lenght && remaining > 0) {
+      
+    }
   }
 
   modifier tokenExists(bytes32 ticker) {
