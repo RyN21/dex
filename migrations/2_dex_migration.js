@@ -70,6 +70,7 @@ module.exports = async function(deployer, _network, accounts) {
     )
   );
 
+  // utility function
   const increaseTime = async (seconds) => {
     await web3.currentProvider.send({
       jsonrpc: '2.0',
@@ -100,6 +101,7 @@ module.exports = async function(deployer, _network, accounts) {
   await increaseTime(1);
   await dex.createLimitOrder(BAT, 2000, 12, SIDE.BUY, {from: trader1});
   await dex.createMarketOrder(BAT, 2000, SIDE.SELL, {from: trader2});
+
   await dex.createLimitOrder(REP, 1000, 2, SIDE.BUY, {from: trader1});
   await dex.createMarketOrder(REP, 1000, SIDE.SELL, {from: trader2});
   await increaseTime(1);
