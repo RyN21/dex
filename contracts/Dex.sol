@@ -185,6 +185,16 @@ contract Dex {
       uint matched = (remaining > available) ? available : remaining;
       remaining -= matched;
       order[i].filled += matched;
+      emit NewTrade(
+        nextTradeId,
+        orders[i].id,
+        ticker,
+        orders[i].trader,
+        msg.sender,
+        matched,
+        orders[i].price,
+        now
+      );
     }
   }
 
