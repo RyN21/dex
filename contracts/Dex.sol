@@ -201,6 +201,12 @@ contract Dex {
         traderBalances[orders[i].trader][ticker] += matched;
         traderBalances[orders[i].trader][DAI] -= matched * orders[i].price;
       }
+      if(side == Side.BUY) {
+        traderBalances[msg.sender][ticker] += matched;
+        traderBalances[msg.sender][DAI] -= matched * orders[i].price;
+        traderBalances[orders[i].trader][ticker] -= matched;
+        traderBalances[orders[i].trader][DAI] += matched * orders[i].price;
+      }
     }
   }
 
