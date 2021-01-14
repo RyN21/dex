@@ -18,4 +18,12 @@ module.exports = async function (deployer) {
   const [dai, bat, rep, zrx, dex] = await Promise.all(
     [Dai, Bat, Rep, Zrx, Dex].map(contract => contract.deployed())
   );
+
+  // add tokens to dex
+  await Promise.all([
+    dex.addToken(DAI ,dai.address),
+    dex.addToken(BAT ,bat.address),
+    dex.addToken(REP ,rep.address),
+    dex.addToken(ZRX ,zrx.address)
+  ]);
 };
