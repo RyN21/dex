@@ -8,7 +8,8 @@ const Dex = artifacts.require('Dex.sol');
 const [DAI, BAT, REP, ZRX] = ['DAI', 'BAT', 'REP', 'ZRX']
 .map(ticker => web3.utils.fromAscii(ticker));
 
-module.exports = async function (deployer) {
+module.exports = async function (deployer, _network, accounts) {
+  const [trader1, trader2, trader3, trader4, _] = accounts;
   // deploy all tokens and dex
   await Promise.all(
     [Dai, Bat, Rep, Zrx, Dex].map(contract => deployer.deploy(contract))
