@@ -290,7 +290,7 @@ contract('Dex', (accounts) => {
   // TEST createMarketOrder function
   // =================================
 
-  it.only('Should create market order', async () => {
+  it('Should create market order', async () => {
     // Fund trader 1 and create limit order
     await dex.deposit(
       web3.utils.toWei('100'),
@@ -330,10 +330,10 @@ contract('Dex', (accounts) => {
     const orders = await dex.getOrders(REP, SIDE.BUY);
 
     assert(orders[0].filled === web3.utils.toWei('5'));
-    assert(balance[0].toString() === web3.utils.toWei('50'));
-    assert(balance[1].toString() === web3.utils.toWei('5'));
-    assert(balance[2].toString() === web3.utils.toWei('50'));
-    assert(balance[3].toString() === web3.utils.toWei('95'));
+    assert(balances[0].toString() === web3.utils.toWei('50'));
+    assert(balances[1].toString() === web3.utils.toWei('5'));
+    assert(balances[2].toString() === web3.utils.toWei('50'));
+    assert(balances[3].toString() === web3.utils.toWei('95'));
   });
 
   it('Should NOT create market order if token does not exist', async () => {
@@ -378,7 +378,7 @@ contract('Dex', (accounts) => {
     );
   });
 
-  it('Shoule NOT create market order if  DAI balance is too low', async () => {
+  it.only('Shoule NOT create market order if  DAI balance is too low', async () => {
     await dex.deposit(
       web3.utils.toWei('100'),
       REP,

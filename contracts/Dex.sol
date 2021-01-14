@@ -180,11 +180,11 @@ contract Dex {
     uint i;
     uint remaining = amount;
 
-    while(i < orders.lenght && remaining > 0) {
+    while(i < orders.length && remaining > 0) {
       uint available = orders[i].amount - orders[i].filled;
       uint matched = (remaining > available) ? available : remaining;
       remaining -= matched;
-      order[i].filled += matched;
+      orders[i].filled += matched;
       emit NewTrade(
         nextTradeId,
         orders[i].id,
@@ -205,7 +205,7 @@ contract Dex {
         require(
           traderBalances[msg.sender][DAI] >= matched * orders[i].price,
           'DAI balance is too low.'
-        )
+        );
         traderBalances[msg.sender][ticker] += matched;
         traderBalances[msg.sender][DAI] -= matched * orders[i].price;
         traderBalances[orders[i].trader][ticker] -= matched;
