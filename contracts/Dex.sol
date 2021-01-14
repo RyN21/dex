@@ -181,7 +181,10 @@ contract Dex {
     uint remaining = amount;
 
     while(i < orders.lenght && remaining > 0) {
-      
+      uint available = orders[i].amount - orders[i].filled;
+      uint matched = (remaining > available) ? available : remaining;
+      remaining -= matched;
+      order[i].filled += matched;
     }
   }
 
