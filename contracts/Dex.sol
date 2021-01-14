@@ -202,6 +202,10 @@ contract Dex {
         traderBalances[orders[i].trader][DAI] -= matched * orders[i].price;
       }
       if(side == Side.BUY) {
+        require(
+          traderBalances[msg.sender][DAI] >= matched * orders[i].price,
+          'Dai balance is too low.'
+        )
         traderBalances[msg.sender][ticker] += matched;
         traderBalances[msg.sender][DAI] -= matched * orders[i].price;
         traderBalances[orders[i].trader][ticker] -= matched;
