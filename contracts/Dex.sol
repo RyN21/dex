@@ -64,6 +64,21 @@ contract Dex {
       return orderBook[ticker][uint(side)];
     }
 
+  function getTokens()
+    external
+    view
+    returns(Token[] memory) {
+      Token[] memory _tokens = new Token[](tokenList.length);
+      for(uint i = 0; i < tokenList.length; i++) {
+        _tokens[i] = Token(
+          tokens[tokenList[i]].id,
+          tokens[tokenList[i]].symbol,
+          tokens[tokenList[i]].at
+        );
+      }
+      return _tokens;
+    }
+
   function addToken(
     bytes32 ticker,
     address tokenAddress)
