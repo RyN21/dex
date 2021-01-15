@@ -134,7 +134,7 @@ contract Dex {
       now
     ));
 
-    uint i = orders.length - 1;
+    uint i = orders.length > 0 ? orders.length - 1 : 0;
     while(i > 0) {
       if(side == Side.BUY && orders[i - 1].price > orders[i].price) {
         break;
@@ -156,10 +156,10 @@ contract Dex {
       orders[i] = order;
 
       // decrement i
-      i--;
+      i = i.sub(1);
     }
     // increment nextOrderId
-    nextOrderId++;
+    nextOrderId = nextOrderId.add(1);
   }
 
   function createMarketOrder(
