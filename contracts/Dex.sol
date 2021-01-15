@@ -6,6 +6,7 @@ import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract Dex {
 
+  // Used to deal with large numbers
   using SafeMath for uint;
 
   enum Side { BUY, SELL }
