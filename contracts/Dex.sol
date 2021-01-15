@@ -95,7 +95,7 @@ contract Dex {
       traderBalances[msg.sender][ticker] >= amount,
       'Balance too low.'
     );
-    traderBalances[msg.sender][ticker] -= amount;
+    traderBalances[msg.sender][ticker] = traderBalances[msg.sender][ticker].sub(amount);
     IERC20(tokens[ticker].tokenAddress).transfer(
       msg.sender, // recipient is the sender of this transaction
       amount // amount to be withdrawn
