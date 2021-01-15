@@ -134,6 +134,7 @@ contract Dex {
       now
     ));
 
+    // if orders.length is superior to 0 then i = orders.length - 0 : otherwise i = 0
     uint i = orders.length > 0 ? orders.length - 1 : 0;
     while(i > 0) {
       if(side == Side.BUY && orders[i - 1].price > orders[i].price) {
