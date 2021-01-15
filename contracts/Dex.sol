@@ -64,20 +64,19 @@ contract Dex {
       return orderBook[ticker][uint(side)];
     }
 
-  function getTokens()
-    external
-    view
-    returns(Token[] memory) {
-      Token[] memory _tokens = new Token[](tokenList.length);
-      for(uint i = 0; i < tokenList.length; i++) {
-        _tokens[i] = Token(
-          tokens[tokenList[i]].id,
-          tokens[tokenList[i]].symbol,
-          tokens[tokenList[i]].at
-        );
-      }
-      return _tokens;
-    }
+   function getTokens()
+     external
+     view
+     returns(Token[] memory) {
+     Token[] memory _tokens = new Token[](tokenList.length);
+     for (uint i = 0; i < tokenList.length; i++) {
+       _tokens[i] = Token(
+         tokens[tokenList[i]].ticker,
+         tokens[tokenList[i]].tokenAddress
+       );
+     }
+     return _tokens;
+   }
 
   function addToken(
     bytes32 ticker,
@@ -246,7 +245,7 @@ contract Dex {
         orders[j] = orders[j + 1];
       }
       orders.pop();
-      i = I.add(1);
+      i = i.add(1);
     }
   }
 
