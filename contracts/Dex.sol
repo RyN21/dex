@@ -214,7 +214,7 @@ contract Dex {
       nextTradeId++;
       i++;
     }
-
+    // remove any orders that have been filled
     i = 0;
     while(i < orders.length && orders[i].filled == orders[i].amount) {
       for(uint j = i; j < orders.length - 1; j++ ) {
