@@ -83,7 +83,7 @@ contract Dex {
       address(this), // sends to this smart contract
       amount // amount to be sent
     );
-    traderBalances[msg.sender][ticker] += amount;
+    traderBalances[msg.sender][ticker] = traderBalances[msg.sender][ticker].add(amount);
   }
 
   function withdraw(
