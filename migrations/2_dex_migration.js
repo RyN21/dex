@@ -33,7 +33,7 @@ module.exports = async function(deployer, _network, accounts) {
     dex.addToken(ZRX, zrx.address)
   ]);
 
-  // Seed traders with tokens
+  // Seed traders with tokens function
   const amount = web3.utils.toWei('1000');
   const seedTokenBalance = async (token, trader) => {
     await token.faucet(trader, amount)
@@ -49,6 +49,8 @@ module.exports = async function(deployer, _network, accounts) {
       {from: trader}
     );
   };
+
+  // Seed Traders
   await Promise.all(
     [dai, bat, rep, zrx].map(
       token => seedTokenBalance(token, trader1)
