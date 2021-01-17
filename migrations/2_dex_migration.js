@@ -42,10 +42,12 @@ module.exports = async function(deployer, _network, accounts) {
       amount,
       {from: trader}
     );
-    const ticker = await token.name();
+    const ticker = await token.constructor._json.contractName;
+    const upCaseTicker = ticker.toUpperCase();
+    console.log(upCaseTicker);
     await dex.deposit(
       amount,
-      web3.utils.fromAscii(ticker),
+      upCaseTicker,
       {from: trader}
     );
   };
