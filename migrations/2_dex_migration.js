@@ -24,6 +24,7 @@ module.exports = async function(deployer, _network, accounts) {
   const [dai, bat, rep, zrx, dex] = await Promise.all(
     [Dai, Bat, Rep, Zrx, Dex].map(contract => contract.deployed())
   );
+  console.log(dai.name)
 
   // add tokens to dex
   await Promise.all([
@@ -42,12 +43,11 @@ module.exports = async function(deployer, _network, accounts) {
       amount,
       {from: trader}
     );
-    const ticker = await token.constructor._json.contractName;
-    const upCaseTicker = ticker.toUpperCase();
-    console.log(upCaseTicker);
+    const ticker = await token.name;
+    // console.log(ticker);
     await dex.deposit(
       amount,
-      upCaseTicker,
+      ticker,
       {from: trader}
     );
   };
