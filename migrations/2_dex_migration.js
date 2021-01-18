@@ -24,7 +24,6 @@ module.exports = async function(deployer, _network, accounts) {
   const [dai, bat, rep, zrx, dex] = await Promise.all(
     [Dai, Bat, Rep, Zrx, Dex].map(contract => contract.deployed())
   );
-  console.log(dai.name)
 
   // add tokens to dex
   await Promise.all([
@@ -33,6 +32,11 @@ module.exports = async function(deployer, _network, accounts) {
     dex.addToken(REP, rep.address),
     dex.addToken(ZRX, zrx.address)
   ]);
+
+  console.log(DAI)
+  console.log(dai.address)
+  console.log(dai)
+
 
   // Seed traders with tokens function
   const amount = web3.utils.toWei('1000');
@@ -47,7 +51,7 @@ module.exports = async function(deployer, _network, accounts) {
     // console.log(ticker);
     await dex.deposit(
       amount,
-      ticker,
+      web3.utils.fromAscii(ticker),
       {from: trader}
     );
   };
