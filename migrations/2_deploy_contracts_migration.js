@@ -33,9 +33,9 @@ module.exports = async function(deployer, _network, accounts) {
     dex.addToken(ZRX, zrx.address)
   ]);
 
-  console.log(DAI)
-  console.log(dai.address)
-  console.log(dai)
+  // console.log(DAI)
+  // console.log(dai.address)
+  // console.log(dai)
 
 
   // Seed traders with tokens function
@@ -48,7 +48,7 @@ module.exports = async function(deployer, _network, accounts) {
       {from: trader}
     );
     const ticker = await token.name;
-    // console.log(ticker);
+    console.log(ticker);
     await dex.deposit(
       amount,
       web3.utils.fromAscii(ticker),
