@@ -48,7 +48,6 @@ module.exports = async function(deployer, _network, accounts) {
       {from: trader}
     );
     const ticker = await token.name;
-    console.log(ticker);
     await dex.deposit(
       amount,
       web3.utils.fromAscii(ticker),
