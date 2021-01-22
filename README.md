@@ -1,3 +1,4 @@
 # dex
 
-Dex is a decentralized exchange for digit assets, such as ERC20 tokens.
+- Dex is a decentralized exchange for digit assets build on the Ethereum Network
+- The smart contract is built with Solidity
