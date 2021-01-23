@@ -47,13 +47,9 @@ module.exports = async function(deployer, _network, accounts) {
       amount,
       {from: trader}
     );
-    const ticker = await token.constructor.contractName;
-    console.log(ticker)
-    console.log(web3.utils.fromAscii('DAI'))
-    console.log(web3.utils.fromAscii(ticker))
-    console.log(DAI)
-    console.log(token.address)
-    console.log([DAI, BAT, REP, ZRX])
+    const ticker = await token.constructor.contractName.toUpperCase();
+    // console.log(token.address)
+    // console.log([DAI, BAT, REP, ZRX])
     await dex.deposit(
       amount,
       web3.utils.fromAscii(ticker),
