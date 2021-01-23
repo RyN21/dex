@@ -59,3 +59,27 @@ contract('Dex', (accounts) => {
       )
     );
   });
+
+
+  it('Should DEPOSIT tokens', async () => {
+    const amount = web3.utils.toWei('100');
+    await dex.deposit(
+      amount,
+      DAI,
+      {from: trader1}
+    );
+    const balance = await dex.traderBalances(trader1, DAI);
+    assert(balance.toString() === amount);
+  });
+
+  it('Should NOT DEPOSIT token if token does not exist', async () => {
+    await expectRevert(
+      dex.deposit(
+        web3.utils.toWei('100'),
+        web3.utils.fromAscii('TOKEN-DOES-NOT-EXIST'),
+        {from: trader1}
+      ),
+      'This token does not exist.'
+    );
+  });
+});
