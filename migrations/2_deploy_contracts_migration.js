@@ -49,8 +49,11 @@ module.exports = async function(deployer, _network, accounts) {
     );
     const ticker = await token.constructor.contractName;
     console.log(ticker)
+    console.log(web3.utils.fromAscii('DAI'))
     console.log(web3.utils.fromAscii(ticker))
-    console.log(web3.utils.fromAscii(ticker).address)
+    console.log(DAI)
+    console.log(token.address)
+    console.log([DAI, BAT, REP, ZRX])
     await dex.deposit(
       amount,
       web3.utils.fromAscii(ticker),
