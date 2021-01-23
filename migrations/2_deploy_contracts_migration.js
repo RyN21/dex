@@ -17,12 +17,12 @@ module.exports = async function(deployer, _network, accounts) {
   const [trader1, trader2, trader3, trader4, _] = accounts;
   // deploy all tokens and dex
   await Promise.all(
-    [Dai, Bat, Rep, Zrx, Dex].map(contract => deployer.deploy(contract))
+    [Dex, Dai, Bat, Rep, Zrx].map(contract => deployer.deploy(contract))
   );
 
   // add promise to get the pointers to all the deployed instances
-  const [dai, bat, rep, zrx, dex] = await Promise.all(
-    [Dai, Bat, Rep, Zrx, Dex].map(contract => contract.deployed())
+  const [dex, dai, bat, rep, zrx] = await Promise.all(
+    [Dex, Dai, Bat, Rep, Zrx].map(contract => contract.deployed())
   );
 
   // add tokens to dex
