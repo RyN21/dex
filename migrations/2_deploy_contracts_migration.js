@@ -47,7 +47,10 @@ module.exports = async function(deployer, _network, accounts) {
       amount,
       {from: trader}
     );
-    const ticker = await token.name;
+    const ticker = await token.constructor.contractName;
+    console.log(ticker)
+    console.log(web3.utils.fromAscii(ticker))
+    console.log(web3.utils.fromAscii(ticker).address)
     await dex.deposit(
       amount,
       web3.utils.fromAscii(ticker),
@@ -57,22 +60,22 @@ module.exports = async function(deployer, _network, accounts) {
 
   // Seed Traders
   await Promise.all(
-    [DAI, BAT, REP, ZRX].map(
+    [dai, bat, rep, zrx].map(
       token => seedTokenBalance(token, trader1)
     )
   );
   await Promise.all(
-    [DAI, BAT, REP, ZRX].map(
+    [dai, bat, rep, zrx].map(
       token => seedTokenBalance(token, trader2)
     )
   );
   await Promise.all(
-    [DAI, BAT, REP, ZRX].map(
+    [dai, bat, rep, zrx].map(
       token => seedTokenBalance(token, trader3)
     )
   );
   await Promise.all(
-    [DAI, BAT, REP, ZRX].map(
+    [dai, bat, rep, zrx].map(
       token => seedTokenBalance(token, trader4)
     )
   );
