@@ -312,14 +312,14 @@
     "absolutePath": "/Users/ryn/eatTheBlocksPro/6FigureBlockchainDeveloper/dex/contracts/mocks/Zrx.sol",
     "exportedSymbols": {
       "Zrx": [
-        824
+        1057
       ]
     },
-    "id": 825,
+    "id": 1058,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 799,
+        "id": 1032,
         "literals": [
           "solidity",
           "0.6",
@@ -331,10 +331,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         "file": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
-        "id": 800,
+        "id": 1033,
         "nodeType": "ImportDirective",
-        "scope": 825,
-        "sourceUnit": 1547,
+        "scope": 1058,
+        "sourceUnit": 1780,
         "src": "24:55:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -346,48 +346,48 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 801,
+              "id": 1034,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1546,
+              "referencedDeclaration": 1779,
               "src": "97:5:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$1546",
+                "typeIdentifier": "t_contract$_ERC20_$1779",
                 "typeString": "contract ERC20"
               }
             },
-            "id": 802,
+            "id": 1035,
             "nodeType": "InheritanceSpecifier",
             "src": "97:5:5"
           }
         ],
         "contractDependencies": [
-          847,
-          1546,
-          1624
+          1080,
+          1779,
+          1857
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 824,
+        "id": 1057,
         "linearizedBaseContracts": [
-          824,
-          1546,
-          1624,
-          847
+          1057,
+          1779,
+          1857,
+          1080
         ],
         "name": "Zrx",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 809,
+              "id": 1042,
               "nodeType": "Block",
               "src": "153:2:5",
               "statements": []
             },
             "documentation": null,
-            "id": 810,
+            "id": 1043,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -396,7 +396,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "307820746f6b656e",
-                    "id": 805,
+                    "id": 1038,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -414,7 +414,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "5a5258",
-                    "id": 806,
+                    "id": 1039,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -430,17 +430,17 @@
                     "value": "ZRX"
                   }
                 ],
-                "id": 807,
+                "id": 1040,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 804,
+                  "id": 1037,
                   "name": "ERC20",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1546,
+                  "referencedDeclaration": 1779,
                   "src": "121:5:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_ERC20_$1546_$",
+                    "typeIdentifier": "t_type$_t_contract$_ERC20_$1779_$",
                     "typeString": "type(contract ERC20)"
                   }
                 },
@@ -452,18 +452,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 803,
+              "id": 1036,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "118:2:5"
             },
             "returnParameters": {
-              "id": 808,
+              "id": 1041,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "153:0:5"
             },
-            "scope": 824,
+            "scope": 1057,
             "src": "107:48:5",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -471,7 +471,7 @@
           },
           {
             "body": {
-              "id": 822,
+              "id": 1055,
               "nodeType": "Block",
               "src": "209:28:5",
               "statements": [
@@ -481,11 +481,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 818,
+                        "id": 1051,
                         "name": "to",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 812,
+                        "referencedDeclaration": 1045,
                         "src": "221:2:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -494,11 +494,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 819,
+                        "id": 1052,
                         "name": "amount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 814,
+                        "referencedDeclaration": 1047,
                         "src": "225:6:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -517,18 +517,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 817,
+                      "id": 1050,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1422,
+                      "referencedDeclaration": 1655,
                       "src": "215:5:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (address,uint256)"
                       }
                     },
-                    "id": 820,
+                    "id": 1053,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -543,7 +543,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 821,
+                  "id": 1054,
                   "nodeType": "ExpressionStatement",
                   "src": "215:17:5"
                 }
@@ -551,7 +551,7 @@
             },
             "documentation": null,
             "functionSelector": "7b56c2b2",
-            "id": 823,
+            "id": 1056,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -559,16 +559,16 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 815,
+              "id": 1048,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 812,
+                  "id": 1045,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 823,
+                  "scope": 1056,
                   "src": "175:10:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -577,7 +577,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 811,
+                    "id": 1044,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "175:7:5",
@@ -592,11 +592,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 814,
+                  "id": 1047,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 823,
+                  "scope": 1056,
                   "src": "187:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -605,7 +605,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 813,
+                    "id": 1046,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "187:4:5",
@@ -621,19 +621,19 @@
               "src": "174:25:5"
             },
             "returnParameters": {
-              "id": 816,
+              "id": 1049,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "209:0:5"
             },
-            "scope": 824,
+            "scope": 1057,
             "src": "159:78:5",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 825,
+        "scope": 1058,
         "src": "81:158:5"
       }
     ],
@@ -643,14 +643,14 @@
     "absolutePath": "/Users/ryn/eatTheBlocksPro/6FigureBlockchainDeveloper/dex/contracts/mocks/Zrx.sol",
     "exportedSymbols": {
       "Zrx": [
-        824
+        1057
       ]
     },
-    "id": 825,
+    "id": 1058,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 799,
+        "id": 1032,
         "literals": [
           "solidity",
           "0.6",
@@ -662,10 +662,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         "file": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
-        "id": 800,
+        "id": 1033,
         "nodeType": "ImportDirective",
-        "scope": 825,
-        "sourceUnit": 1547,
+        "scope": 1058,
+        "sourceUnit": 1780,
         "src": "24:55:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -677,48 +677,48 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 801,
+              "id": 1034,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1546,
+              "referencedDeclaration": 1779,
               "src": "97:5:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$1546",
+                "typeIdentifier": "t_contract$_ERC20_$1779",
                 "typeString": "contract ERC20"
               }
             },
-            "id": 802,
+            "id": 1035,
             "nodeType": "InheritanceSpecifier",
             "src": "97:5:5"
           }
         ],
         "contractDependencies": [
-          847,
-          1546,
-          1624
+          1080,
+          1779,
+          1857
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 824,
+        "id": 1057,
         "linearizedBaseContracts": [
-          824,
-          1546,
-          1624,
-          847
+          1057,
+          1779,
+          1857,
+          1080
         ],
         "name": "Zrx",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 809,
+              "id": 1042,
               "nodeType": "Block",
               "src": "153:2:5",
               "statements": []
             },
             "documentation": null,
-            "id": 810,
+            "id": 1043,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -727,7 +727,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "307820746f6b656e",
-                    "id": 805,
+                    "id": 1038,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -745,7 +745,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "5a5258",
-                    "id": 806,
+                    "id": 1039,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -761,17 +761,17 @@
                     "value": "ZRX"
                   }
                 ],
-                "id": 807,
+                "id": 1040,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 804,
+                  "id": 1037,
                   "name": "ERC20",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 1546,
+                  "referencedDeclaration": 1779,
                   "src": "121:5:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_ERC20_$1546_$",
+                    "typeIdentifier": "t_type$_t_contract$_ERC20_$1779_$",
                     "typeString": "type(contract ERC20)"
                   }
                 },
@@ -783,18 +783,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 803,
+              "id": 1036,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "118:2:5"
             },
             "returnParameters": {
-              "id": 808,
+              "id": 1041,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "153:0:5"
             },
-            "scope": 824,
+            "scope": 1057,
             "src": "107:48:5",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -802,7 +802,7 @@
           },
           {
             "body": {
-              "id": 822,
+              "id": 1055,
               "nodeType": "Block",
               "src": "209:28:5",
               "statements": [
@@ -812,11 +812,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 818,
+                        "id": 1051,
                         "name": "to",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 812,
+                        "referencedDeclaration": 1045,
                         "src": "221:2:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -825,11 +825,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 819,
+                        "id": 1052,
                         "name": "amount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 814,
+                        "referencedDeclaration": 1047,
                         "src": "225:6:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -848,18 +848,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 817,
+                      "id": 1050,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1422,
+                      "referencedDeclaration": 1655,
                       "src": "215:5:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (address,uint256)"
                       }
                     },
-                    "id": 820,
+                    "id": 1053,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -874,7 +874,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 821,
+                  "id": 1054,
                   "nodeType": "ExpressionStatement",
                   "src": "215:17:5"
                 }
@@ -882,7 +882,7 @@
             },
             "documentation": null,
             "functionSelector": "7b56c2b2",
-            "id": 823,
+            "id": 1056,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -890,16 +890,16 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 815,
+              "id": 1048,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 812,
+                  "id": 1045,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 823,
+                  "scope": 1056,
                   "src": "175:10:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -908,7 +908,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 811,
+                    "id": 1044,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "175:7:5",
@@ -923,11 +923,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 814,
+                  "id": 1047,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 823,
+                  "scope": 1056,
                   "src": "187:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -936,7 +936,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 813,
+                    "id": 1046,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "187:4:5",
@@ -952,19 +952,19 @@
               "src": "174:25:5"
             },
             "returnParameters": {
-              "id": 816,
+              "id": 1049,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "209:0:5"
             },
-            "scope": 824,
+            "scope": 1057,
             "src": "159:78:5",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 825,
+        "scope": 1058,
         "src": "81:158:5"
       }
     ],
@@ -1029,12 +1029,12 @@
         }
       },
       "links": {},
-      "address": "0xa44C3D4AC7f70191509cC38e1E6359E12f25B23a",
-      "transactionHash": "0x5b288fdfece9707ef4c3dc76afb48d222b5eecd51dca0f78b068b18e9f338f7f"
+      "address": "0x3f706892EE3740B221Ff6DaA49D4A864f0B0bceb",
+      "transactionHash": "0xbbf2ff6623202a7a44adf0baad137586f1c1f40eac540419b9dad1259c2f4792"
     }
   },
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-01-14T14:38:38.339Z",
+  "updatedAt": "2021-01-23T22:20:20.577Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
