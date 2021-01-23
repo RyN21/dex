@@ -33,11 +33,6 @@ module.exports = async function(deployer, _network, accounts) {
     dex.addToken(ZRX, zrx.address)
   ]);
 
-  // console.log(DAI)
-  // console.log(dai.address)
-  // console.log(dai)
-
-
   // Seed traders with tokens function
   const amount = web3.utils.toWei('1000');
   const seedTokenBalance = async (token, trader) => {
@@ -48,8 +43,6 @@ module.exports = async function(deployer, _network, accounts) {
       {from: trader}
     );
     const ticker = await token.constructor.contractName.toUpperCase();
-    // console.log(token.address)
-    // console.log([DAI, BAT, REP, ZRX])
     await dex.deposit(
       amount,
       web3.utils.fromAscii(ticker),
