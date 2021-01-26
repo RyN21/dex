@@ -30,6 +30,14 @@ function LoadingContainer() {
   if(!isReady()) {
     return <div>Loading...</div>;
   }
+
+  return (
+    <App
+      web3={web3}
+      accounts={accounts}
+      contract={contract}
+    />
+  );
 }
 
 export default LoadingContainer;
