@@ -35,7 +35,7 @@ function Dropdown({onSelect, activeItem, items}) {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default Dropdown;

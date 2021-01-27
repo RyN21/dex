@@ -30,13 +30,16 @@ function App({web3, accounts, contracts}) {
   }
 
   return (
-    <div className="App">
+    <div id="app">
       <Header
         contracts={contracts}
         tokens={tokens}
         user={user}
         selectToken={selectToken}
       />
+      <div>
+        Main Part
+      </div>
     </div>
   );
 }
