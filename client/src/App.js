@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Header from './Header.js';
 
-function App() {
+function App({web3, accounts, contracts}) {
+  const [tokens, setTokens] = useState([]);
+  const [user, setUser] = useState({
+    accounts: [],
+    selectedToken: undefined
+  });
+
+  const selectToken = token => {
+    setUser({...user, selectedToken: token});
+  }
+
+  useEffect(() => {
+    const init = async () => {
+      const rawTokens = await contracts.dex.methods.getTokens().call();
+      const tokens = rawTokens.map(token => ({
+        ...token,
+        ticker: web3.utils.hexToUtf8(token.ticker)
+      }));
+      setTokens(tokens);
+      setUser({accounts, selectedToken: tokens[0]});
+    }
+    init();
+  }, []);
+
+  if(typeof user.selectedToken === 'undefined') {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        contracts={contracts}
+        tokens={tokens}
+        user={user}
+        selectToken={selectToken}
+      />
     </div>
   );
 }
