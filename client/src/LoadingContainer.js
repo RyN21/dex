@@ -35,11 +35,7 @@ function LoadingContainer() {
     <App
       web3={web3}
       accounts={accounts}
-<<<<<<< HEAD
-      contract={contracts}
-=======
-      contract={contract}
->>>>>>> 969f70397ff38a8f07164fb79194f5573f18929c
+      contracts={contracts}
     />
   );
 }
